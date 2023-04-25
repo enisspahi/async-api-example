@@ -14,12 +14,12 @@ jobs:
       - name: Validating AsyncAPI specification
         uses: WaleedAshraf/asyncapi-github-action@v0.0.3
         with:
-          filepath: src/main/resources/asyncapi.yaml      
+          filepath: src/main/resources/async-api.yaml      
       - name: Generating HTML from my AsyncAPI document
         uses: asyncapi/github-action-for-generator@v0.2.0
         with:
           template: '@asyncapi/html-template@0.3.0'
-          filepath: src/main/resources/asyncapi.yml
+          filepath: src/main/resources/async-api.yaml
           parameters: baseHref=/test-experiment/ sidebarOrganization=byTags #space separated list of key/values
           output: docs/
       - name: Upload artifact
