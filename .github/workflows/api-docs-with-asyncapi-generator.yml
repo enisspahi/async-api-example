@@ -1,6 +1,10 @@
 name: Publish AsyncAPI Docs with AsyncAPI generator
 run-name: ${{ github.actor }} is publishing API Docs with AsyncAPI 🚀
-on: [workflow_dispatch]
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
 jobs:
   Generate-API-Docs:
     runs-on: ubuntu-latest
