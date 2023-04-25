@@ -13,4 +13,4 @@ The spec is converted into a static html page to be served on [github pages](htt
    `asyncapi generate fromTemplate src/main/resources/async-api.yaml @asyncapi/html-template -o docs/`
 3. Observe generated `docs/index.html` page
 
-**[github-actions job](https://github.com/enisspahi/contract-first-api-example/actions/workflows/api-docs-with-redoc.yml)** can trigger the API Docs generation and publishes the generated docs to github pages.
+**[github-actions job](https://github.com/enisspahi/async-api-example/actions/workflows/api-docs-with-asyncapi-generator.yml)** can trigger the API Docs generation and publishes the generated docs to github pages.
