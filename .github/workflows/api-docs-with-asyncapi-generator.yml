@@ -11,14 +11,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Validating AsyncAPI specification
-        uses: WaleedAshraf/asyncapi-github-action@v0.0.3
-        with:
-          filepath: src/main/resources/async-api.yaml      
       - name: Generating HTML from my AsyncAPI document
-        uses: asyncapi/github-action-for-generator@v0.2.0
+        uses: docker://asyncapi/github-action-for-generator:2.0.0
         with:
-          template: '@asyncapi/html-template@0.3.0'
+          template: '@asyncapi/html-template@0.15.4'  #In case of template from npm, because of @ it must be in quotes
           filepath: src/main/resources/async-api.yaml
           parameters: baseHref=/test-experiment/ sidebarOrganization=byTags #space separated list of key/values
           output: docs/
