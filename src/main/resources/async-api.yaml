@@ -1,0 +1,63 @@
+asyncapi: 2.0.0
+info:
+  title: Ping Service
+  version: '1.0.0'
+  description: |
+    Ping Pong message exchange
+
+servers:
+  localhost:
+    url: localhost:9092
+    protocol: kafka
+    protocolVersion: '1.0.0'
+
+channels:
+  ping.topic:
+    description: Kafka topic for ping messages
+    publish:
+      operationId: pingSent
+      message:
+        $ref : '#/components/messages/Ping'
+  pong.topic:
+    description: Kafka topic for pong messages
+    subscribe:
+      operationId: pongReceived
+      message:
+        $ref : '#/components/messages/Pong'      
+
+components:
+  messages:
+    Ping:
+      name: Ping
+      title: Ping Message
+      summary: This is a Ping message
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/PingPayload'
+    Pong:
+      name: Pong
+      title: Pong Message
+      summary: This is a Pong message
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/PongPayload'
+
+  schemas:
+    PingPayload:
+      type: object
+      properties:
+        sender:
+          type: string
+          description: "Sender of the ping message"
+        createdAt:
+          type: string
+          format: date-time
+    PongPayload:
+      type: object
+      properties:
+        receiver:
+          type: string
+          description: "Receiver of the pong message"
+        receivedAt:
+          type: string
+          format: date-time            
